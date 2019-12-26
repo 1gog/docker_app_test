@@ -15,8 +15,15 @@ services:
       dockerfile: Dockerfile
     image: demo_app_test:0.1
     ports:
-      - "5000:5000"
+      - "5001:5001"
     networks:
-      - app  
+      - app
+    links:
+      - app
+      - clickhouse
+  clickhouse:
+     image: yandex/clickhouse-server
+     
+
 networks:
   app:
